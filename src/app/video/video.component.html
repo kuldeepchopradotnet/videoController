@@ -1,0 +1,38 @@
+<ul>
+    <li *ngFor="let device of devices">
+
+        <div  *ngIf="device.kind === 'audioinput'">
+
+
+            <a style="color:red;" href="javascript:void(0)" (click)="selectDevice(device)">
+                {{device.label}}
+            </a>
+
+        </div>
+
+
+        <div *ngIf="device.kind === 'videoinput'">
+        <a style="color:green;"  href="javascript:void(0)" (click)="selectDevice(device)">
+            {{device.label}}
+        </a>
+        </div>
+    
+
+    </li>
+</ul>
+
+<ul>
+
+<li *ngFor="let f of audioFrequecy">
+
+    <progress id="file" value="{{f}}" max="256"></progress>
+
+</li>
+
+</ul>
+
+
+
+<button (click)="enterRoom()"> Start Video </button>
+
+<video controls></video>
