@@ -1,38 +1,58 @@
-<ul>
-    <li *ngFor="let device of devices">
+<div class="jumbotron text-center">
+    <h1>Video Audio Test</h1>
+    <p>test connected devices</p>
+</div>
 
-        <div  *ngIf="device.kind === 'audioinput'">
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-4">
+            <h3>Connected Devices</h3>
 
+            <div class="dropdown">
+                <button type="button" class="btn btn-primary dropdown-toggle device-btn" data-toggle="dropdown">
+                    <i class="fa fa-microphone" aria-hidden="true"></i> {{selectedAudioDevice}}
+                </button>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="javascript:void(0)" (click)="selectDevice(device)" *ngFor="let device of audioDevices">
+                        {{device.label}}
+                    </a>
+                </div>
+            </div>
 
-            <a style="color:red;" href="javascript:void(0)" (click)="selectDevice(device)">
-                {{device.label}}
-            </a>
+            <br />
+
+            <div class="dropdown">
+                <button type="button" class="btn btn-info dropdown-toggle device-btn" data-toggle="dropdown">
+                    <i class="fa fa-camera" aria-hidden="true"></i> {{selectedVideoDevice}}
+                </button>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="javascript:void(0)" (click)="selectDevice(device)" *ngFor="let device of videoDevices">
+                        {{device.label}}
+                    </a>
+                </div>
+            </div>
+
 
         </div>
+        <div class="col-sm-4">
+            <h3>Microphone analyser</h3>
+            <ul>
+                <li *ngFor="let f of audioFrequecy">
+                    <progress id="file" value="{{f}}" max="256"></progress>
+                </li>
+            </ul>
 
-
-        <div *ngIf="device.kind === 'videoinput'">
-        <a style="color:green;"  href="javascript:void(0)" (click)="selectDevice(device)">
-            {{device.label}}
-        </a>
         </div>
-    
-
-    </li>
-</ul>
-
-<ul>
-
-<li *ngFor="let f of audioFrequecy">
-
-    <progress id="file" value="{{f}}" max="256"></progress>
-
-</li>
-
-</ul>
+        <div class="col-sm-4">
+            <h3>Camera</h3>
+            <video id="camera-video"></video>
+            <br />
+            <button (click)="enterRoom()"> Start Video </button>
+        </div>
+    </div>
 
 
 
-<button (click)="enterRoom()"> Start Video </button>
 
-<video controls></video>
+
+</div>

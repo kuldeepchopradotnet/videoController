@@ -1,3 +1,11 @@
 li:empty {
     display: none;
 }
+
+#camera-video {
+    width: 100% !important;
+}
+
+.device-btn {
+    width: 98% !important;
+}
